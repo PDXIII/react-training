@@ -10,6 +10,12 @@
   },
   "author": "npm-dev <noreply@marketlogicsoftware.com>",
   "license": "ISC",
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ]
+  },
   "dependencies": {
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
@@ -25,11 +31,5 @@
     "style-loader": "^0.18.2",
     "webpack": "^2.3.1",
     "webpack-dev-server": "^2.4.2"
-  },
-  "babel": {
-    "presets": [
-      "env",
-      "react"
-    ]
   }
 }
