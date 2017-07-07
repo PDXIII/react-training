@@ -29,6 +29,27 @@ li {
   cursor: pointer;
 }
 
-.active-tab {
-  color: red;
+.popular-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.popular-rank {
+  font-size: 20px;
+  margin: 8px;
+}
+
+.popular-item {
+  margin: 24px;
+  text-align: center;
+}
+
+.space-list-item {
+  margin-bottom: 8px;
+}
+
+.avatar {
+  width: 120px;
+  border-radius: 50%;
 }
