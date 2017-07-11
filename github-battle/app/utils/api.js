@@ -1,20 +1,22 @@
 import axios from 'axios'
 
-var id = 'YOUR_CLIENT_ID'
-var secret = 'YOUR_SECRET_ID'
+var token = '5eb34285f35ce7e140021cb4e3ea19bff502e78e'
+
+var id = '78bcbfd573253b7e382a'
+var secret = '5836ae0b96efb221ae01606e61d11f15af698b0a'
 var params = `?client_id=${ id }&client_secret=${ secret }`
 
 var getProfile = username => {
   // if you have registered your app you can use the params
   // `https://api.github.com/users/${username}${params}`
-  return axios.get(`https://api.github.com/users/${ username }`)
+  return axios.get(`https://api.github.com/users/${ username }${ params }`)
   .then(( user ) => {
     return user.data
   })
 }
 
 var getRepos = username => {
-  return axios.get(`https://api.github.com/users/${ username }/repos&per_page=100`)
+  return axios.get(`https://api.github.com/users/${ username }/repos${ params }&per_page=100`)
   .then(( repos ) => {
     return repos.data
   })
