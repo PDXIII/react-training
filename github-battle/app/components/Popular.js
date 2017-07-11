@@ -92,7 +92,7 @@ class Popular extends React.Component {
 
     api.fetchPopularRepos( lang )
     .then((repos) => {
-      console.log(repos);
+      // console.log(r0epos);
       this.setState({
         repos: repos,
       })
