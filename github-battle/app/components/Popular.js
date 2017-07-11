@@ -99,7 +99,9 @@ class Popular extends React.Component {
     })
   }
   render () {
-
+    console.log('dude');
+    // api.battle('pdxiii', 'fabiantheblind')
+    // then((data) => console.log(data))
     return (
       <div>
         Popular
