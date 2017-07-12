@@ -7,24 +7,27 @@ var secret = '5836ae0b96efb221ae01606e61d11f15af698b0a'
 var params = `?client_id=${ id }&client_secret=${ secret }`
 
 var getProfile = username => {
-  // if you have registered your app you can use the params
-  // `https://api.github.com/users/${username}${params}`
+
   return axios.get(`https://api.github.com/users/${ username }${ params }`)
   .then(( user ) => {
+    // console.log( user );
     return user.data
   })
 }
 
 var getRepos = username => {
+
   return axios.get(`https://api.github.com/users/${ username }/repos${ params }&per_page=100`)
   .then(( repos ) => {
+    // console.log( repos.data );
     return repos.data
   })
 }
 
 var getStarCount = repos => {
-  return repos.data.reduce(( count, repo ) => {
-    return count + repo.stargazer_count
+
+  return repos.reduce(( count, repo ) => {
+    return count + repo.stargazers_count
   }, 0)
 }
 
@@ -41,6 +44,7 @@ var handleError = error => {
 }
 
 var getUserData = player => {
+  // console.log( player )
   return axios.all([
     getProfile( player ),
     getRepos( player )
@@ -62,7 +66,7 @@ var sortPlayers = players => {
 
 export default {
   battle: ( players ) => {
-    return axios.all( player.map( getUserData ))
+    return axios.all( players.map( getUserData ))
     .then(sortPlayers)
     .catch(handleError)
   },

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import api from '../utils/api'
 
+import Loading from './Loading'
+
 
 function SelectLanguage ( props ) {
   var languages = [
@@ -92,14 +94,13 @@ class Popular extends React.Component {
 
     api.fetchPopularRepos( lang )
     .then((repos) => {
-      // console.log(r0epos);
+      // console.log(repos);
       this.setState({
         repos: repos,
       })
     })
   }
   render () {
-    console.log('dude');
     // api.battle('pdxiii', 'fabiantheblind')
     // then((data) => console.log(data))
     return (
@@ -109,8 +110,9 @@ class Popular extends React.Component {
           selectedLanguage={this.state.selectedLanguage}
           onSelect={this.updateLanguage}
         />
+
         { ! this.state.repos
-          ? <p>LOADING</p>
+          ? ( <Loading text="Waiting"/>)
           : ( <RepoGrid
             repos={ this.state.repos }
           /> )

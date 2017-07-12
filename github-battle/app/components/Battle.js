@@ -2,33 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
+import PlayerPreview from './PlayerPreview'
 
-const PlayerPreview = props => (
-  <div>
-    <div className="column">
-      <img
-        src={ props.avatar }
-        alt={ `${ props.username }’s avatar` }
-        className="avatar"
-      />
-      <h2 className="username">
-        @{ props.username }
-      </h2>
-    </div>
-    <button
-      className="reset"
-      onClick={ props.onReset.bind( null, props.id ) }>
-      Reset User
-    </button>
-  </div>
-)
-
-PlayerPreview.propTypes = {
-  avatar: PropTypes.string.isRequired,
-  username: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  onReset: PropTypes.func.isRequired,
-}
 
 class PlayerInput extends React.Component {
   constructor(props) {
@@ -149,10 +124,13 @@ export default class Battle extends React.Component {
           { playerOneImage !== null &&
             <PlayerPreview
               avatar={ playerOneImage }
-              username={ playerOneName }
-              onReset={ this.handleReset }
-              id="playerOne"
-            />
+              username={ playerOneName }>
+              <button
+                className="reset"
+                onClick={ this.handleReset.bind( null, 'playerOne' ) }>
+                Reset User
+              </button>
+            </PlayerPreview>
           }
 
           {! playerTwoName &&
@@ -167,14 +145,17 @@ export default class Battle extends React.Component {
           { playerTwoImage !== null &&
             <PlayerPreview
               avatar={ playerTwoImage }
-              username={ playerTwoName }
-              onReset={ this.handleReset }
-              id="playerTwo"
-            />
+              username={ playerTwoName }>
+              <button
+                className="reset"
+                onClick={ this.handleReset.bind( null, 'playerTwo' ) }>
+                Reset User
+              </button>
+            </PlayerPreview>
           }
 
         </div>
-          { playerOneImage && playerTwoImage &&
+        { playerOneImage && playerTwoImage &&
           <Link
             className="button"
             to={{
@@ -183,7 +164,7 @@ export default class Battle extends React.Component {
             }}>
             Battle
           </Link>}
-      </div>
-    )
+        </div>
+      )
+    }
   }
-}
